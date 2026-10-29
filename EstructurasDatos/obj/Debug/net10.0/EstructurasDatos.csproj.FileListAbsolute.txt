@@ -1,0 +1,15 @@
+C:\Users\Benny\Documents\Equipo--Amarillo--Estructuras-de-datos\EstructurasDatos\bin\Debug\net10.0\EstructurasDatos.exe
+C:\Users\Benny\Documents\Equipo--Amarillo--Estructuras-de-datos\EstructurasDatos\bin\Debug\net10.0\EstructurasDatos.deps.json
+C:\Users\Benny\Documents\Equipo--Amarillo--Estructuras-de-datos\EstructurasDatos\bin\Debug\net10.0\EstructurasDatos.runtimeconfig.json
+C:\Users\Benny\Documents\Equipo--Amarillo--Estructuras-de-datos\EstructurasDatos\bin\Debug\net10.0\EstructurasDatos.dll
+C:\Users\Benny\Documents\Equipo--Amarillo--Estructuras-de-datos\EstructurasDatos\bin\Debug\net10.0\EstructurasDatos.pdb
+C:\Users\Benny\Documents\Equipo--Amarillo--Estructuras-de-datos\EstructurasDatos\obj\Debug\net10.0\EstructurasDatos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Benny\Documents\Equipo--Amarillo--Estructuras-de-datos\EstructurasDatos\obj\Debug\net10.0\EstructurasDatos.AssemblyInfoInputs.cache
+C:\Users\Benny\Documents\Equipo--Amarillo--Estructuras-de-datos\EstructurasDatos\obj\Debug\net10.0\EstructurasDatos.AssemblyInfo.cs
+C:\Users\Benny\Documents\Equipo--Amarillo--Estructuras-de-datos\EstructurasDatos\obj\Debug\net10.0\EstructurasDatos.csproj.CoreCompileInputs.cache
+C:\Users\Benny\Documents\Equipo--Amarillo--Estructuras-de-datos\EstructurasDatos\obj\Debug\net10.0\EstructurasDatos.sourcelink.json
+C:\Users\Benny\Documents\Equipo--Amarillo--Estructuras-de-datos\EstructurasDatos\obj\Debug\net10.0\EstructurasDatos.dll
+C:\Users\Benny\Documents\Equipo--Amarillo--Estructuras-de-datos\EstructurasDatos\obj\Debug\net10.0\refint\EstructurasDatos.dll
+C:\Users\Benny\Documents\Equipo--Amarillo--Estructuras-de-datos\EstructurasDatos\obj\Debug\net10.0\EstructurasDatos.pdb
+C:\Users\Benny\Documents\Equipo--Amarillo--Estructuras-de-datos\EstructurasDatos\obj\Debug\net10.0\EstructurasDatos.genruntimeconfig.cache
+C:\Users\Benny\Documents\Equipo--Amarillo--Estructuras-de-datos\EstructurasDatos\obj\Debug\net10.0\ref\EstructurasDatos.dll
