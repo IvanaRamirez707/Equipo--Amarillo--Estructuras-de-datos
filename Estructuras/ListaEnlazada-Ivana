@@ -1,1 +1,275 @@
-aaaa
+
+using System;
+
+class Pieza
+{
+    public int Id;
+    public string Nombre;
+    public int PosicionCorrecta;
+    public bool Colocada;
+
+    public Pieza(int id, string nombre, int posicionCorrecta)
+    {
+        Id = id;
+        Nombre = nombre;
+        PosicionCorrecta = posicionCorrecta;
+        Colocada = false;
+    }
+}
+
+class Nodo
+{
+    public Pieza Dato;
+    public Nodo Siguiente;
+
+    public Nodo(Pieza dato)
+    {
+        Dato = dato;
+        Siguiente = null;
+    }
+}
+
+class ListaPiezas
+{
+    private Nodo cabeza;
+
+    public ListaPiezas()
+    {
+        cabeza = null;
+    }
+
+    public void Agregar(Pieza pieza)
+    {
+        Nodo nuevo = new Nodo(pieza);
+
+        if (cabeza == null)
+        {
+            cabeza = nuevo;
+        }
+        else
+        {
+            Nodo actual = cabeza;
+
+            while (actual.Siguiente != null)
+            {
+                actual = actual.Siguiente;
+            }
+
+            actual.Siguiente = nuevo;
+        }
+
+        Console.WriteLine("Pieza agregada correctamente.");
+    }
+
+    public void Mostrar()
+    {
+        if (cabeza == null)
+        {
+            Console.WriteLine("No hay piezas registradas.");
+            return;
+        }
+
+        Nodo actual = cabeza;
+
+        Console.WriteLine("\n--- PIEZAS DEL ROMPECABEZAS ---");
+
+        while (actual != null)
+        {
+            Console.WriteLine(
+                "ID: " + actual.Dato.Id +
+                " | Nombre: " + actual.Dato.Nombre +
+                " | Posición: " + actual.Dato.PosicionCorrecta +
+                " | Estado: " + (actual.Dato.Colocada ? "Colocada" : "Pendiente")
+            );
+
+            actual = actual.Siguiente;
+        }
+    }
+
+    public void Buscar(int id)
+    {
+        Nodo actual = cabeza;
+
+        while (actual != null)
+        {
+            if (actual.Dato.Id == id)
+            {
+                Console.WriteLine("Pieza encontrada: " + actual.Dato.Nombre);
+                Console.WriteLine("Posición correcta: " + actual.Dato.PosicionCorrecta);
+                Console.WriteLine("Estado: " + (actual.Dato.Colocada ? "Colocada" : "Pendiente"));
+                return;
+            }
+
+            actual = actual.Siguiente;
+        }
+
+        Console.WriteLine("No se encontró la pieza.");
+    }
+
+    public void Colocar(int id, int posicion)
+    {
+        Nodo actual = cabeza;
+
+        while (actual != null)
+        {
+            if (actual.Dato.Id == id)
+            {
+                if (actual.Dato.Colocada)
+                {
+                    Console.WriteLine("Esta pieza ya está colocada.");
+                }
+                else if (actual.Dato.PosicionCorrecta == posicion)
+                {
+                    actual.Dato.Colocada = true;
+                    Console.WriteLine("¡Correcto! Pieza colocada.");
+                }
+                else
+                {
+                    Console.WriteLine("Posición incorrecta. Inténtalo de nuevo.");
+                }
+
+                return;
+            }
+
+            actual = actual.Siguiente;
+        }
+
+        Console.WriteLine("No se encontró la pieza.");
+    }
+
+    public void Eliminar(int id)
+    {
+        if (cabeza == null)
+        {
+            Console.WriteLine("La lista está vacía.");
+            return;
+        }
+
+        if (cabeza.Dato.Id == id)
+        {
+            cabeza = cabeza.Siguiente;
+            Console.WriteLine("Pieza eliminada.");
+            return;
+        }
+
+        Nodo actual = cabeza;
+
+        while (actual.Siguiente != null)
+        {
+            if (actual.Siguiente.Dato.Id == id)
+            {
+                actual.Siguiente = actual.Siguiente.Siguiente;
+                Console.WriteLine("Pieza eliminada.");
+                return;
+            }
+
+            actual = actual.Siguiente;
+        }
+
+        Console.WriteLine("No se encontró la pieza.");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        ListaPiezas lista = new ListaPiezas();
+
+        lista.Agregar(new Pieza(1, "Puerta del bosque", 1));
+        lista.Agregar(new Pieza(2, "Casa de dulces", 2));
+        lista.Agregar(new Pieza(3, "Camino de piedras", 3));
+        lista.Agregar(new Pieza(4, "Árbol encantado", 4));
+
+        int opcion = 0;
+
+        do
+        {
+            Console.WriteLine("\n===== ROMPECABEZAS DE DOC =====");
+            Console.WriteLine("1. Agregar pieza");
+            Console.WriteLine("2. Mostrar piezas");
+            Console.WriteLine("3. Buscar pieza");
+            Console.WriteLine("4. Colocar pieza");
+            Console.WriteLine("5. Eliminar pieza");
+            Console.WriteLine("6. Salir");
+            Console.Write("Selecciona una opción: ");
+
+            if (!int.TryParse(Console.ReadLine(), out opcion))
+            {
+                Console.WriteLine("Ingresa un número válido.");
+                continue;
+            }
+
+            switch (opcion)
+            {
+                case 1:
+                    Console.Write("ID de la pieza: ");
+                    if (!int.TryParse(Console.ReadLine(), out int id))
+                    {
+                        Console.WriteLine("ID inválido.");
+                        break;
+                    }
+
+                    Console.Write("Nombre de la pieza: ");
+                    string nombre = Console.ReadLine() ?? "";
+
+                    Console.Write("Posición correcta: ");
+                    if (!int.TryParse(Console.ReadLine(), out int posicion))
+                    {
+                        Console.WriteLine("Posición inválida.");
+                        break;
+                    }
+
+                    lista.Agregar(new Pieza(id, nombre, posicion));
+                    break;
+
+                case 2:
+                    lista.Mostrar();
+                    break;
+
+                case 3:
+                    Console.Write("ID de la pieza que buscas: ");
+                    if (int.TryParse(Console.ReadLine(), out int idBuscar))
+                        lista.Buscar(idBuscar);
+                    else
+                        Console.WriteLine("ID inválido.");
+                    break;
+
+                case 4:
+                    Console.Write("ID de la pieza: ");
+                    if (!int.TryParse(Console.ReadLine(), out int idColocar))
+                    {
+                        Console.WriteLine("ID inválido.");
+                        break;
+                    }
+
+                    Console.Write("Posición donde quieres colocarla: ");
+                    if (!int.TryParse(Console.ReadLine(), out int posicionIngresada))
+                    {
+                        Console.WriteLine("Posición inválida.");
+                        break;
+                    }
+
+                    lista.Colocar(idColocar, posicionIngresada);
+                    break;
+
+                case 5:
+                    Console.Write("ID de la pieza que deseas eliminar: ");
+                    if (int.TryParse(Console.ReadLine(), out int idEliminar))
+                        lista.Eliminar(idEliminar);
+                    else
+                        Console.WriteLine("ID inválido.");
+                    break;
+
+                case 6:
+                    Console.WriteLine("Cerrando el rompecabezas...");
+                    break;
+
+                default:
+                    Console.WriteLine("Opción no válida.");
+                    break;
+            }
+
+        } while (opcion != 6);
+    }
+}
